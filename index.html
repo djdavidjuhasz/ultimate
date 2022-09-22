@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+        <script src="./animation.js"></script>
+        <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script> -->
+    </head>
+    <body>
+      <a-scene id="scene">
+        <a-assets>
+          <a-asset-item id="bird" src="./phoenix_bird/scene.gltf"></a-asset-item>
+          <img id="floor" src="./TexturesCom_GravelCobble0018_1_seamless_S.jpg">
+          <img id="floor-NRM" src="./NormalMap.png">
+        </a-assets>
+
+        <a-entity position="0 10 0" rotation="0 0 0" camerachange>
+          <a-camera id="camera" wasd-controls-enabled="false">
+            <a-cursor></a-cursor>
+            <a-entity
+              gltf-model="#bird"
+              scale="0.01 0.01 0.01"
+              position="0 -6 -20"
+              rotation="0 90 0"
+              avataranimation>
+            </a-entity>
+          </a-camera>
+        </a-entity>
+
+        <a-plane
+            material="
+              color: #ffffff;
+              src: #floor;
+              repeat: 500 500;
+              normal-map: #floor-NRM;
+              normal-texture-repeat: 500 500"
+            rotation="-90 0 0"
+            scale="1000 1000 1">
+        </a-plane>
+
+        <a-box 
+            position="0 10 -30" 
+            color="blue"
+            animation="property: rotation; from: 0 0 0; to: 0 360 0; dur: 2000; startEvents: click">
+          </a-box>
+        
+      </a-scene>
+    </body>
+</html>
